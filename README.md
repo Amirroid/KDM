@@ -1,11 +1,78 @@
-This is a Kotlin Multiplatform project targeting Desktop.
+# KDM
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+**KDM** is a simple and lightweight **terminal-based downloader** built with **Compose**.
 
+It allows you to easily download any file from a URL directly inside your terminal, with a minimal
+and animated UI.
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+![Screenshot](screenshots/screenshot.png)
+
+---
+
+## How to Build
+
+To package the application for your OS, run:
+
+```bash
+./gradlew packageUberJarForCurrentOS
+```
+
+This will generate an executable JAR file at:
+
+```
+composeApp/build/compose/jars/{yourJarFile}.jar
+```
+
+---
+
+## How to Run
+
+You can run the application with:
+
+```bash
+java -jar composeApp/build/compose/jars/{yourJarFile}.jar {url}
+```
+
+Example:
+
+```bash
+java -jar composeApp/build/compose/jars/ir.amirroid.kdm-macos-arm64-1.0.0.jar https://example.com/file.zip
+```
+
+---
+
+## Using KDM Globally (Optional)
+
+You can also make **KDM** globally accessible in your terminal, by creating a simple launcher
+script:
+
+1. Create a file named `kdm` with the following content:
+
+    ```bash
+    #!/bin/bash
+    java -jar /path/to/ir.amirroid.kdm-macos-arm64-1.0.0.jar "$@"
+    ```
+
+2. Make the script executable:
+
+    ```bash
+    chmod +x kdm
+    ```
+
+3. Move it to `/usr/local/bin`:
+
+    ```bash
+    sudo mv kdm /usr/local/bin/
+    ```
+
+Now you can use `kdm` from anywhere:
+
+```bash
+kdm https://example.com/file.zip
+```
+
+---
+
+## License
+
+MIT License
