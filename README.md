@@ -2,8 +2,7 @@
 
 **KDM** is a simple and lightweight **terminal-based downloader** built with **Compose**.
 
-It allows you to easily download any file from a URL directly inside your terminal, with a minimal
-and animated UI.
+It allows you to easily download any file from a URL directly inside your terminal.
 
 ![Screenshot](screenshots/screenshot.png)
 
@@ -43,8 +42,7 @@ java -jar composeApp/build/compose/jars/ir.amirroid.kdm-macos-arm64-1.0.0.jar ht
 
 ## Using KDM Globally (Optional)
 
-You can also make **KDM** globally accessible in your terminal, by creating a simple launcher
-script:
+You can also make **KDM** globally accessible in your terminal by creating a simple launcher script:
 
 1. Create a file named `kdm` with the following content:
 
