@@ -37,7 +37,8 @@ private inline fun validateUrl(
     onValid: @Composable (URI) -> Unit,
     onInvalid: @Composable () -> Unit,
 ) {
-    runCatching {
-        URI(url).apply { toASCIIString() }
-    }.onSuccess { onValid.invoke(it) }.onFailure { onInvalid.invoke() }
+    runCatching { URI(url).apply { toURL() } }
+        .getOrNull()
+        ?.let { onValid(it) }
+        ?: onInvalid()
 }

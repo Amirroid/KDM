@@ -82,7 +82,15 @@ fun Downloading(
             }
         }
         .onError {
-            Text(it.formatErrorMessage(), color = Color.Red)
+            Column {
+                Text(it.formatErrorMessage(), color = Color.Red)
+                Text(
+                    "Press any key to exit.",
+                    modifier = Modifier.onKeyEvent { _ ->
+                        exitProcess(0)
+                    }, color = Color.Red
+                )
+            }
         }
 }
 
